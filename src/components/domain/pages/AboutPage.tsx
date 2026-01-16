@@ -1,0 +1,96 @@
+import { useTranslation } from 'react-i18next';
+import { useMediaQuery } from 'usehooks-ts';
+import { Box, HBox, PageContainer, VBox } from '../../ui/layout';
+import { Heading, LabeledText, Text } from '../../ui/mywild';
+import GitHubLogo from './../../../assets/github/github.svg?react';
+import myWildLogo from './../../../assets/mywild/mywild-logo.png';
+
+export function AboutPage() {
+    const { t } = useTranslation();
+
+    const isDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
+
+    return (
+        <PageContainer>
+            <VBox fullWidth>
+                <Box margin='1rem'>
+                    <VBox fullWidth gap='1.5rem'>
+                        <VBox>
+                            <Heading>
+                                {t('appTitle')}
+                            </Heading>
+                            <Text>
+                                {t('aboutDescription')}
+                            </Text>
+                            <Text variant='warning'>
+                                TODO: Show details about the sellers?
+                            </Text>
+                        </VBox>
+                        <HBox gap='0.5rem' marginLeft='auto' marginRight='auto'>
+                            <img
+                                src={myWildLogo}
+                                height={30}
+                                alt='MyWild'
+                                style={{ backgroundColor: '#fff', borderRadius: '50%', padding: '1px' }}
+                            />
+                            <a
+                                href='https://www.mywild.co.za'
+                                style={{ textDecoration: 'none' }}
+                                target='_blank'
+                                rel='noopener'
+                            >
+                                <VBox gap={0}>
+                                    <Text size='standard'>
+                                        {t('mywildTitle')}
+                                    </Text>
+                                    <Text size='small' variant='subdued'>
+                                        {t('mywildDeveloper')}
+                                    </Text>
+                                </VBox>
+                            </a>
+                            <GitHubLogo
+                                height={30}
+                                fill={isDarkMode ? '#fff' : '#000'}
+                            />
+                            <a
+                                href='https://github.com/HenryDeLange/wildwood'
+                                style={{ textDecoration: 'none' }}
+                                target='_blank'
+                                rel='noopener'
+                            >
+                                <VBox gap={0}>
+                                    <Text size='standard'>
+                                        {t('githubTitle')}
+                                    </Text>
+                                    <Text size='small' variant='subdued'>
+                                        {t('githubDescription')}
+                                    </Text>
+                                </VBox>
+                            </a>
+                        </HBox>
+                        <VBox>
+                            <Heading>
+                                {t('aboutVersion')}
+                            </Heading>
+                            <LabeledText
+                                label={t('aboutVersionWebsite')}
+                                body={`${VITE_APP_VERSION} | ${dateFormatter.format(new Date(import.meta.env.VITE_COMMIT_DATE))} | ${import.meta.env.VITE_COMMIT_HASH}`}
+                            />
+                        </VBox>
+                    </VBox>
+                </Box>
+            </VBox >
+        </PageContainer >
+    );
+}
+
+const dateFormatter = new Intl.DateTimeFormat('en-ZA', {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    hour12: false,
+    timeZone: 'Africa/Johannesburg'
+});

@@ -1,0 +1,21 @@
+@use '../../../../main.scss' as *;
+
+.ShowOnMobile {
+    display: none;
+}
+
+@media (max-width: $mobile-cutoff) {
+    .ShowOnMobile {
+        display: block;
+    }
+}
+
+.ShowOnMobileHardCutoff {
+    display: none;
+}
+
+@media (max-width: $mobile-hard-cutoff) {
+    .ShowOnMobileHardCutoff {
+        display: block;
+    }
+}

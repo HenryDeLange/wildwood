@@ -1,0 +1,52 @@
+:root {
+    --color-primary: oklch(56.018% 0.11868 242.872);
+
+    --color-canvas: oklch(91.262% 0.02117 232.329);
+    --color-text: #000000;
+    --color-shadow: #00000055;
+    --color-button: #bfdbf1;
+    --color-input: #e2eff8;
+    --color-surface: #f3fffd;
+
+    --color-error: oklch(45.832% 0.18097 28.396);
+    --color-warning: oklch(52.08% 0.11794 60.343);
+
+    --color-gray-75: oklch(0% 0 0 / 0.116);
+    --color-gray-100: oklch(9.64% 0.02 256.742 / 0.144);
+    --color-gray-200: oklch(12.048% 0.03527 265.713 / 0.164);
+    --color-gray-300: oklch(11.949% 0.03326 265.106 / 0.171);
+    --color-gray-400: oklch(12% 8% 264deg / 38%);
+    --color-gray-500: oklch(12% 7.5% 264deg / 50%);
+    --color-gray-600: oklch(12% 7% 264deg / 67%);
+    --color-gray-700: oklch(12% 6% 264deg / 77%);
+    --color-gray-800: oklch(12% 5% 264deg / 85%);
+    --color-gray-900: oklch(12% 5% 264deg / 90%);
+    --color-gray-950: oklch(12% 5% 264deg / 95%);
+}
+
+/* See "data-theme" in "index.html", instead of using "@media (prefers-color-scheme: dark)". */
+:root[data-theme='dark'] {
+    --color-primary: oklch(60.89% 0.08235 217.014);
+
+    --color-canvas: oklch(28.36% 0.00869 208.935);
+    --color-text: #ffffff;
+    --color-shadow: #00000055;
+    --color-button: #324355;
+    --color-input: oklch(17% 1% 264deg);
+    --color-surface: oklch(35.812% 0.01024 254.04);
+
+    --color-error: oklch(80% 55% 31deg);
+    --color-warning: oklch(63.166% 0.11404 60.924);
+
+    --color-gray-75: oklch(20.483% 0.00617 271.115 / 0.815);
+    --color-gray-100: oklch(28% 3% 264deg / 65%);
+    --color-gray-200: oklch(25.935% 0.01039 260.735 / 0.8);
+    --color-gray-300: oklch(40.429% 0.01291 261.79 / 0.863);
+    --color-gray-400: oklch(47% 3.5% 264deg / 80%);
+    --color-gray-500: oklch(64% 4% 264deg / 80%);
+    --color-gray-600: oklch(82% 4% 264deg / 80%);
+    --color-gray-700: oklch(92% 4.5% 264deg / 80%);
+    --color-gray-800: oklch(93% 3.5% 264deg / 85%);
+    --color-gray-900: oklch(95% 2% 264deg / 90%);
+    --color-gray-950: oklch(94% 1.5% 264deg / 95%);
+}

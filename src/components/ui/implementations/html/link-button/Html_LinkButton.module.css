@@ -1,0 +1,24 @@
+.Link {
+    color: var(--color-gray-900);
+    text-decoration: none;
+    align-self: center;
+
+    &:focus-visible {
+        outline: 2px solid var(--color-primary);
+        outline-offset: -2px;
+        border-radius: var(--radius-sm);
+    }
+
+    &[data-disabled=true] {
+        /* cursor: not-allowed; */
+        cursor: default;
+    }
+}
+
+@media (hover: hover) {
+    .Link {
+        &:hover {
+            cursor: pointer !important;
+        }
+    }
+}
