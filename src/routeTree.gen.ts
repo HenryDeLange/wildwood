@@ -53,7 +53,7 @@ export interface FileRoutesByFullPath {
   '/care': typeof CareRoute
   '/faq': typeof FaqRoute
   '/item/$itemId': typeof ItemItemIdRoute
-  '/sell': typeof SellIndexRoute
+  '/sell/': typeof SellIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -74,7 +74,7 @@ export interface FileRoutesById {
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/care' | '/faq' | '/item/$itemId' | '/sell'
+  fullPaths: '/' | '/about' | '/care' | '/faq' | '/item/$itemId' | '/sell/'
   fileRoutesByTo: FileRoutesByTo
   to: '/' | '/about' | '/care' | '/faq' | '/item/$itemId' | '/sell'
   id:
@@ -129,7 +129,7 @@ declare module '@tanstack/react-router' {
     '/sell/': {
       id: '/sell/'
       path: '/sell'
-      fullPath: '/sell'
+      fullPath: '/sell/'
       preLoaderRoute: typeof SellIndexRouteImport
       parentRoute: typeof rootRouteImport
     }

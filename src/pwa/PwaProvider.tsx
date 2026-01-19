@@ -48,7 +48,7 @@ export function PwaProvider({ children }: Readonly<Props>) {
 
     // RENDER
     return (
-        <PwaContext.Provider
+        <PwaContext
             value={
                 useMemo<PwaContextType>(() => ({
                     isPwa,
@@ -58,7 +58,7 @@ export function PwaProvider({ children }: Readonly<Props>) {
             }
         >
             {children}
-        </PwaContext.Provider>
+        </PwaContext>
     );
 }
 

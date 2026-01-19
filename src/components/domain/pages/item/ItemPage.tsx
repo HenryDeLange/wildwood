@@ -1,7 +1,7 @@
+import { useQuery } from '@tanstack/react-query';
 import { CircleCheckBig } from 'lucide-react';
-import Papa from 'papaparse';
-import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { fetchItems, KEY_GOOGLE_SHEET } from '../../../../data/queries';
 import { Box, HBox, PageContainer, VBox } from '../../../ui/layout';
 import { Heading, LinkButton, RouterButton, Text } from '../../../ui/mywild';
 import type { ItemProps } from '../../components/Item';
@@ -14,30 +14,10 @@ type Props = {
 export function ItemPage({ itemId }: Props) {
     const { t } = useTranslation();
 
-    const [items, setItems] = useState<ItemProps[] | null>(null);
-
-    useEffect(() => {
-        fetch('https://docs.google.com/spreadsheets/d/e/2PACX-1vQ6Tp66xYo2Zk0nCJeW9VNEs3q06p6driZO7k-e8sX0KzFYcrisNQ9JHqP-2pJDjj_LG21QhWbq-_iW/pub?gid=0&single=true&output=csv')
-            .then(res => res.text())
-            .then(content => {
-                const parsed = Papa.parse(content, {
-                    header: true, // Use first row as keys
-                    skipEmptyLines: true // Ignore blank rows
-                });
-                const mapped: ItemProps[] = (parsed.data as any[]).map(row => ({
-                    id: row['ID'],
-                    item: row['Item'],
-                    description: row['Description'],
-                    price: parseFloat(row['Price'].replace(/[^\d.]/g, '')), // strip 'R'
-                    seller: row['Seller'],
-                    photo: row['Photo'] || null,
-                    dateAdded: new Date(row['Date Added']),
-                    dateSold: row['Date Sold'] ? new Date(row['Date Sold']) : null,
-                    paymentLink: row['Payment Link']
-                }));
-                setItems(mapped);
-            });
-    }, []);
+    const {
+        data: items,
+        isLoading
+    } = useQuery({ queryKey: [KEY_GOOGLE_SHEET], queryFn: fetchItems });
 
     const item: ItemProps | null = items?.find(fetchedItem => Number(fetchedItem.id) === itemId) ?? null;
 
@@ -45,7 +25,7 @@ export function ItemPage({ itemId }: Props) {
         <PageContainer>
             <VBox fullWidth>
                 <Box margin='1rem'>
-                    {!items
+                    {isLoading
                         ? // loading
                         <LoadingIndicator />
                         : // loaded

@@ -1,6 +1,6 @@
 import type { LinkProps } from '@tanstack/react-router';
 import { ArrowBigDownDash } from 'lucide-react';
-import { useContext, useMemo } from 'react';
+import { use, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { PwaContext } from '../../../pwa/pwaContext';
 import { Box, HBox, HideOnMobile, ShowOnMobile, VBox } from '../../ui/layout';
@@ -10,7 +10,7 @@ import { Drawer } from '../../ui/mywild/Drawer';
 export function AppHeader() {
     const { t } = useTranslation();
 
-    const { isPwa, showPwaInstallButton, handleInstallClick } = useContext(PwaContext);
+    const { isPwa, showPwaInstallButton, handleInstallClick } = use(PwaContext);
 
     const menus = useMemo(() => [
         {
@@ -51,18 +51,18 @@ export function AppHeader() {
                         </HBox>
                     </ShowOnMobile>
                     <HideOnMobile useHardCutoff>
-                        <RouterLink to='/' forceReload>
+                        <RouterLink to='/'>
                             {logo}
                         </RouterLink>
                     </HideOnMobile>
                     <ShowOnMobile useHardCutoff>
-                        <RouterLink to='/' forceReload>
+                        <RouterLink to='/'>
                             {smallLogo}
                         </RouterLink>
                     </ShowOnMobile>
                     <HideOnMobile>
                         <HBox gap='0.25rem'>
-                            <RouterLink to='/' forceReload>
+                            <RouterLink to='/'>
                                 <Heading variant='priority' size='sub-title'>
                                     {t('appTitle')}
                                 </Heading>
@@ -70,7 +70,7 @@ export function AppHeader() {
                         </HBox>
                     </HideOnMobile>
                     <ShowOnMobile>
-                        <RouterLink to='/' forceReload>
+                        <RouterLink to='/'>
                             <Text size='large'>
                                 {t('appTitle')}
                             </Text>
